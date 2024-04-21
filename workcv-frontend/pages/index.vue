@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ButtonPrimary from '~/components/element/button/ButtonPrimary.vue'
 </script>
 
 <template>
@@ -34,15 +33,15 @@ import ButtonPrimary from '~/components/element/button/ButtonPrimary.vue'
         <template #panels>
           <element-tab-panel>
             <ElementInputSearch/>
-            <button-primary>Search</button-primary>
+            <element-button-primary>Search</element-button-primary>
           </element-tab-panel>
           <element-tab-panel>
             <ElementInputSearch/>
-            <button-primary>Search</button-primary>
+            <element-button-primary>Search</element-button-primary>
           </element-tab-panel>
           <element-tab-panel>
             <ElementInputSearch/>
-            <button-primary>Search</button-primary>
+            <element-button-primary>Search</element-button-primary>
           </element-tab-panel>
         </template>
       </element-tab-group>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ButtonSecondary from '~/components/element/button/ButtonSecondary.vue'
 </script>
 
 <template>
@@ -22,9 +21,9 @@ import ButtonSecondary from '~/components/element/button/ButtonSecondary.vue'
         <slot name="location"></slot>
       </div>
     </div>
-    <button-secondary class="absolute bottom-4 right-4"
+    <element-button-secondary class="absolute bottom-4 right-4"
     >Apply Job
-    </button-secondary>
+    </element-button-secondary>
   </div>
 </template>
 
