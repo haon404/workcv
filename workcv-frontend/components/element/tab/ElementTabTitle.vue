@@ -3,7 +3,7 @@
       :active="active"
       @click="currentTab = tabNum"
       @mouseover.stop
-      class="p-active:border-purple p-active:border-r-4 p-active:text-purple hover: hover:text-green hover:border-green border-4 border-b-0 border-r-0 px-4 py-2 last:border-r-4 hover:cursor-pointer"
+      class="transition-colors duration-300 p-active:border-purple p-active:border-r-4 p-active:text-purple hover: hover:text-green hover:border-green border-4 border-b-0 border-r-0 px-4 py-2 last:border-r-4 hover:cursor-pointer"
   >
     <slot></slot>
   </div>

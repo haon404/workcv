@@ -4,7 +4,7 @@
 
 <template>
   <div class="bg-white text-black">
-    <div class="mx-auto flex max-w-screen-lg flex-col">
+    <div class="container mx-auto flex max-w-screen-lg flex-col">
       <span class="text-purple mx-auto text-sm uppercase">
         Lorem ipsum dolor sit.
       </span>

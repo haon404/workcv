@@ -1,6 +1,6 @@
 <template>
   <div
-      class="relative mx-5 flex flex-col space-y-4 border-2 border-black px-14 py-2"
+      class="relative mx-5 flex flex-col space-y-4 border-2 border-black px-14 py-2 transition-colors duration-300"
       :class="purpleText"
       ref="hoverElement"
   >
@@ -17,7 +17,7 @@
     </div>
     <element-icon-goto
         :class="purpleText"
-        class="absolute right-2 text-transparent"
+        class="absolute right-2 text-transparent transition-colors duration-300"
     ></element-icon-goto>
   </div>
 </template>
