@@ -5,7 +5,6 @@ import Navigation from '~/components/frame/Navigation.vue'
 </script>
 
 <template>
-<!--TODO: Navbar here-->
   <navigation>
     <template #icon>
       <ElementIconWebsite/>
