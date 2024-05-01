@@ -8,7 +8,8 @@ const loggedIn = useCookie('loggedIn')
 
 onClickOutside(target, () => show.value = false)
 function logout() {
-loggedIn.value = 'false'
+  loggedIn.value = 'false'
+  navigateTo("/")
 }
 </script>
 
