@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/workcv.iml" filepath="$PROJECT_DIR$/.idea/workcv.iml" />
-      <module fileurl="file://$PROJECT_DIR$/workcv-backend/workcv-backend.iml" filepath="$PROJECT_DIR$/workcv-backend/workcv-backend.iml" />
     </modules>
   </component>
 </project>
