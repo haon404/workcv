@@ -4,13 +4,10 @@ import ElementDropdown from '~/components/element/dropdown/ElementDropdown.vue'
 
 const show = ref(false)
 const target = ref(null)
-const loggedIn = useCookie('loggedIn')
+
+const {logoutUser} = useAuth()
 
 onClickOutside(target, () => show.value = false)
-function logout() {
-  loggedIn.value = 'false'
-  navigateTo("/")
-}
 </script>
 
 <template>
@@ -30,7 +27,7 @@ function logout() {
         <nuxt-link to="/posts">Posts</nuxt-link>
       </element-dropdown>
       <element-dropdown>
-        <button @click="logout">Logout</button>
+        <button @click="logoutUser">Logout</button>
       </element-dropdown>
     </div>
   </div>

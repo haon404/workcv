@@ -3,13 +3,17 @@ definePageMeta({
   layout: false
 })
 
-const loggedIn = useCookie('loggedIn', {
-  default: () => false
-})
+const username = ref("")
+const password = ref("")
 
-function login() {
-  loggedIn.value = true
-  navigateTo("/")
+const {authenticateUser} = useAuth()
+const {authenticated, error} = storeToRefs(useAuth())
+
+async function login(){
+  await authenticateUser(username.value, password.value)
+  if(authenticated.value) {
+    navigateTo("/")
+  }
 }
 </script>
 
@@ -20,10 +24,11 @@ function login() {
         class="mx-auto flex max-w-screen-sm flex-col border-4 px-6 py-3"
         @submit.prevent="login"
     >
+      <label v-if="error" class="text-red-500">Wrong email or password</label>
       <label for="email">Email:</label>
-      <input type="text" name="email" class="text-black" />
+      <input v-model="username" type="text" name="email" class="text-black" />
       <label for="password">Password:</label>
-      <input type="password" name="password" class="text-black" />
+      <input v-model="password" type="password" name="password" class="text-black" />
       <input
           type="submit"
           value="Submit"
