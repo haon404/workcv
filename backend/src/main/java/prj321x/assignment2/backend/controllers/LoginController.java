@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import prj321x.assignment2.backend.services.TokenService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("api/v1/login")
 @CrossOrigin
@@ -21,7 +24,10 @@ public class LoginController {
     private final TokenService tokenService;
     
     @PostMapping
-    public String provideLoginToken(Authentication authentication) {
-        return tokenService.generateToken(authentication);
+    public Map<String, String> provideLoginToken(Authentication authentication) {
+        Map<String, String> response = new HashMap<>();
+        response.put("token", tokenService.generateToken(authentication));
+        response.put("role", authentication.getAuthorities().stream().toList().get(0).toString());
+        return response;
     }
 }

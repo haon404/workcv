@@ -24,11 +24,11 @@ public class ApplicantDto implements Serializable {
     private Integer id;
     private String description;
     private String email;
-    private String full_name;
+    private String fullName;
     private String address;
     private String phoneNumber;
     private String pfp;
-    private Integer role;
+    private String role;
     private CvDto cv;
     private Set<CompanyFollowDto> companyFollows = new LinkedHashSet<>();
     private Set<RecruitmentSaveDto> recruitmentSaves = new LinkedHashSet<>();

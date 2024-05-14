@@ -30,8 +30,8 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("api/v1/recruiter/**").hasRole("RECRUITER")
-                        .requestMatchers("api/v1/applicant/**").hasRole("APPLICANT")
+                        .requestMatchers("api/v1/recruiter/**").hasAuthority("SCOPE_RECRUITER")
+                        .requestMatchers("api/v1/applicant/**").hasAuthority("SCOPE_APPLICANT")
                         .anyRequest().permitAll()
                 )
                 .oauth2ResourceServer(oath2 -> oath2

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useUserStore } from '~/stores/useUserStore'
+
 definePageMeta({
   layout: false
 })
@@ -9,9 +11,13 @@ const password = ref("")
 const {authenticateUser} = useAuth()
 const {authenticated, error} = storeToRefs(useAuth())
 
+const {user} = storeToRefs(useUserStore())
+const {getUserDetail} = useUserStore()
+
 async function login(){
   await authenticateUser(username.value, password.value)
   if(authenticated.value) {
+    await getUserDetail()
     navigateTo("/")
   }
 }

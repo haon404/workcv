@@ -19,11 +19,11 @@ public class RecruiterDto implements Serializable {
     private Integer id;
     private String description;
     private String email;
-    private String full_name;
+    private String fullName;
     private String address;
     private String phoneNumber;
     private String pfp;
-    private Integer role;
+    private String role;
     private Integer status;
     private CompanyDto company;
 }

@@ -9,7 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="workcv-backend" />
       </profile>
-      <profile name="Annotation profile for workcv-backend" enabled="true">
+      <profile name="Annotation profile for backend" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
