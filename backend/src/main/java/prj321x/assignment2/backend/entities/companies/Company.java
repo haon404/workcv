@@ -37,13 +37,13 @@ public class Company {
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
     
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Recruitment> recruitments = new LinkedHashSet<>();
     
-    @OneToMany(mappedBy = "company", orphanRemoval = true)
+    @OneToMany(mappedBy = "company", orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<CompanyFollow> companyFollows = new LinkedHashSet<>();
     
-    @OneToMany(mappedBy = "company", orphanRemoval = true)
+    @OneToMany(mappedBy = "company", orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<User> recruiters = new LinkedHashSet<>();
     
 }

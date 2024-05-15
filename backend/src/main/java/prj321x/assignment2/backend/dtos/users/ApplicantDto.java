@@ -7,14 +7,13 @@ import lombok.experimental.Accessors;
 import prj321x.assignment2.backend.dtos.companies.CompanyFollowDto;
 import prj321x.assignment2.backend.dtos.recruitments.RecruitmentApplyDto;
 import prj321x.assignment2.backend.dtos.recruitments.RecruitmentSaveDto;
-import prj321x.assignment2.backend.entities.users.User;
 
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * DTO for {@link User}
+ * DTO for {@link prj321x.assignment2.backend.entities.users.User}
  */
 @Data
 @AllArgsConstructor

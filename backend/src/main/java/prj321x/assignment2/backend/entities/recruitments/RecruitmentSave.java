@@ -15,7 +15,7 @@ public class RecruitmentSave {
     @Column(name = "id", nullable = false)
     private Integer id;
     
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "recruitment_id", nullable = false)
     private Recruitment recruitment;
     

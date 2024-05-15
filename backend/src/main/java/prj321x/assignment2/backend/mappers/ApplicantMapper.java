@@ -6,10 +6,10 @@ import prj321x.assignment2.backend.entities.users.User;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ApplicantMapper {
-    User toEntity(ApplicantDto userDto);
+    User toEntity(prj321x.assignment2.backend.dtos.users.ApplicantDto applicantDto);
     
     ApplicantDto toDto(User user);
     
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    User partialUpdate(ApplicantDto userDto, @MappingTarget User user);
+    User partialUpdate(prj321x.assignment2.backend.dtos.users.ApplicantDto applicantDto, @MappingTarget User user);
 }

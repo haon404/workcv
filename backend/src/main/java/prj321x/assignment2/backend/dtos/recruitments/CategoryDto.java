@@ -6,16 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
- * DTO for {@link prj321x.assignment2.backend.entities.recruitments.RecruitmentSave}
+ * DTO for {@link prj321x.assignment2.backend.entities.recruitments.Category}
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-public class RecruitmentSaveDto implements Serializable {
+public class CategoryDto implements Serializable {
     private Integer id;
-    private Integer recruitmentId;
-    private Integer userId;
+    private String name;
+    private Set<Integer> recruitmentIds;
 }

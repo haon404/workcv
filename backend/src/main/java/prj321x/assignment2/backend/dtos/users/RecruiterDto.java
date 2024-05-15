@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import prj321x.assignment2.backend.dtos.companies.CompanyDto;
 
 import java.io.Serializable;
 
@@ -25,5 +24,5 @@ public class RecruiterDto implements Serializable {
     private String pfp;
     private String role;
     private Integer status;
-    private CompanyDto company;
+    private Integer companyId;
 }

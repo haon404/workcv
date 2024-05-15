@@ -5,7 +5,7 @@
     <persistence-units>
       <persistence-unit name="Default">
         <packages>
-          <package value="prj321x.assignment2.workcvbackend" />
+          <package value="prj321x.assignment2.backend" />
         </packages>
       </persistence-unit>
     </persistence-units>

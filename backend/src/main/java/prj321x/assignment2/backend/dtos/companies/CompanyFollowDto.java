@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import prj321x.assignment2.backend.dtos.users.ApplicantDto;
-import prj321x.assignment2.backend.entities.companies.CompanyFollow;
 
 import java.io.Serializable;
 
 /**
- * DTO for {@link CompanyFollow}
+ * DTO for {@link prj321x.assignment2.backend.entities.companies.CompanyFollow}
  */
 @Data
 @AllArgsConstructor
@@ -18,6 +16,6 @@ import java.io.Serializable;
 @Accessors(chain = true)
 public class CompanyFollowDto implements Serializable {
     private Integer id;
-    private CompanyDto company;
-    private ApplicantDto user;
+    private Integer companyId;
+    private Integer userId;
 }

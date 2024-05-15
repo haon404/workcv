@@ -18,7 +18,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@ToString
 @RequiredArgsConstructor
 @Table(name = "recruitment")
 @EntityListeners(AuditingEntityListener.class)
@@ -53,12 +52,20 @@ public class Recruitment {
     @Column(name = "due_date", nullable = false)
     private String dueDate;
     
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = false)
+    @ToString.Exclude
     private Company company;
     
-    @OneToMany(mappedBy = "recruitment", orphanRemoval = true)
+    @OneToMany(mappedBy = "recruitment", orphanRemoval = true, fetch = FetchType.LAZY)
+    @ToString.Exclude
     private Set<RecruitmentApply> recruitmentApplies = new LinkedHashSet<>();
+    
+    @ManyToMany
+    @JoinTable(name = "recruitment_categories",
+            joinColumns = @JoinColumn(name = "recruitment_id"),
+            inverseJoinColumns = @JoinColumn(name = "categories_id"))
+    private Set<Category> categories = new LinkedHashSet<>();
     
     @Override
     public final boolean equals(Object o) {

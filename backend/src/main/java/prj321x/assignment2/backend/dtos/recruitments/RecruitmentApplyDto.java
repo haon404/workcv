@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import prj321x.assignment2.backend.dtos.users.ApplicantDto;
 import prj321x.assignment2.backend.dtos.users.CvDto;
 
 import java.io.Serializable;
@@ -20,8 +19,8 @@ import java.time.LocalDateTime;
 public class RecruitmentApplyDto implements Serializable {
     private Integer id;
     private LocalDateTime createdDate;
-    private RecruitmentDto recruitment;
-    private ApplicantDto user;
-    private CvDto cv;
     private Integer status;
+    private Integer recruitmentId;
+    private Integer userId;
+    private CvDto cv;
 }

@@ -17,5 +17,5 @@ import java.io.Serializable;
 public class CvDto implements Serializable {
     private Integer id;
     private String fileName;
-    private ApplicantDto user;
+    private Integer userId;
 }

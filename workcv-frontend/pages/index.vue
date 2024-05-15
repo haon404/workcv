@@ -1,5 +1,29 @@
 <script setup lang="ts">
+import type { Category } from '~/entity/Category'
 
+//Section popular company
+import type { Company } from '~/entity/Company'
+import type { Recruitment } from '~/entity/Recruitment'
+
+const company = ref<Company>()
+await useHttp<Company>("/company/popular")
+    .then(r => company.value = r)
+    .catch(e => console.log(e))
+
+const recruitment = ref<Recruitment>()
+await useHttp<Recruitment>("/recruitment/popular")
+    .then(r => recruitment.value = r)
+    .catch(e => console.log(e))
+const recruitmentCompany = ref<Company>()
+await useHttp<Company>(`/company/${recruitment.value?.companyId}`)
+    .then(r => recruitmentCompany.value = r)
+    .catch(e => console.log(e))
+
+// Section categories
+const popularCategories = ref<Category[]>()
+await useHttp<Category[]>("/category/populars")
+    .then(r => popularCategories.value = r)
+    .catch(e => console.log(e))
 </script>
 
 <template>
@@ -51,17 +75,8 @@
   
   <section-job class="py-24">
     <template #card>
-      <module-card-job :amount="1">
-        <template #category>Lorem.</template>
-      </module-card-job>
-      <module-card-job :amount="2">
-        <template #category>Lorem.</template>
-      </module-card-job>
-      <module-card-job :amount="1">
-        <template #category>Lorem.</template>
-      </module-card-job>
-      <module-card-job :amount="2">
-        <template #category>Lorem.</template>
+      <module-card-job v-for="category in popularCategories" :amount="category.recruitmentIds.length">
+        <template #category>{{ category.name }}</template>
       </module-card-job>
     </template>
   </section-job>
@@ -111,17 +126,18 @@
     </template>
   </section-description>
   
-  <section-popular class="py-24">
+  <section-popular class="py-24" :amount="recruitmentCompany?.recruitments.length">
     <template #cards>
       <module-card-popular>
-        <template #desc> Full time </template>
-        <template #title> .NET Developers recruitment </template>
-        <template #company> FPT Software </template>
-        <template #location> Da Nang </template>
+        <template #desc> {{ recruitment?.description }} </template>
+        <template #title> {{ recruitment?.title }} </template>
+        <template #company> {{ recruitmentCompany?.name }} </template>
+        <template #location> {{ recruitment?.address }} </template>
       </module-card-popular>
     </template>
-    <template #companyImage> </template>
-    <template #companyName> FPT Software </template>
+<!--    TODO: change logo to actual picture-->
+    <template #companyImage>{{ company?.logo }}</template>
+    <template #companyName> {{ company?.name }} </template>
   </section-popular>
   
 </template>

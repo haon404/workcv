@@ -3,20 +3,13 @@ package prj321x.assignment2.backend.mappers;
 import org.mapstruct.*;
 import prj321x.assignment2.backend.dtos.users.CvDto;
 import prj321x.assignment2.backend.entities.users.Cv;
-import prj321x.assignment2.backend.entities.users.User;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, uses = {ApplicantMapper.class})
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CvMapper {
+    @Mapping(source = "userId", target = "user.id")
     Cv toEntity(CvDto cvDto);
     
-    @AfterMapping
-    default void linkUser(@MappingTarget Cv cv) {
-        User user = cv.getUser();
-        if (user != null) {
-            user.setCv(cv);
-        }
-    }
-    
+    @Mapping(source = "user.id", target = "userId")
     CvDto toDto(Cv cv);
     
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
