@@ -1,26 +1,27 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useUserStore } from '~/stores/useUserStore'
 
 definePageMeta({
-  layout: false
+  layout: false,
 })
 
-const username = ref("")
-const password = ref("")
+const username = ref('')
+const password = ref('')
 
-const {authenticateUser} = useAuth()
-const {authenticated, error} = storeToRefs(useAuth())
+const { authenticateUser } = useAuth()
+const { authenticated, error } = storeToRefs(useAuth())
 
-const {user} = storeToRefs(useUserStore())
-const {getUserDetail} = useUserStore()
+const { user } = storeToRefs(useUserStore())
+const { getUserDetail } = useUserStore()
 
 async function login(){
   await authenticateUser(username.value, password.value)
-  if(authenticated.value) {
+  if (authenticated.value) {
     await getUserDetail()
-    navigateTo("/")
+    navigateTo('/')
   }
 }
+
 </script>
 
 <template>
@@ -32,15 +33,20 @@ async function login(){
     >
       <label v-if="error" class="text-red-500">Wrong email or password</label>
       <label for="email">Email:</label>
-      <input v-model="username" type="text" name="email" class="text-black" />
+      <input v-model="username" class="text-black" name="email" type="text"/>
       <label for="password">Password:</label>
-      <input v-model="password" type="password" name="password" class="text-black" />
+      <input v-model="password" class="text-black" name="password" type="password"/>
       <input
+          class="my-5 w-1/4 border-4 text-center hover:cursor-pointer hover:border-green hover:text-green"
           type="submit"
           value="Submit"
-          class="my-5 w-1/4 border-4 text-center hover:cursor-pointer hover:border-green hover:text-green"
       />
     </form>
+    <div class="text-center my-3">
+      Doesn't have an account?
+      <NuxtLink class="text-green hover:text-purple hover:cursor-pointer" to="/register">Register
+      </NuxtLink>
+    </div>
   </div>
 </template>
 

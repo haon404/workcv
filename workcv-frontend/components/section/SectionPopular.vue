@@ -1,8 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import type { Company } from '~/entity/Company'
+
 withDefaults(defineProps<{
   amount: number
+  company: Company
 }>(), {
-  amount: 0
+  amount: 0,
 })
 </script>
 
@@ -38,7 +41,7 @@ withDefaults(defineProps<{
             {{ amount }}
           </div>
           <div class="text-sm">
-            {{ amount > 1? "positions" : "position" }}
+            {{ amount > 1 ? 'positions' : 'position' }}
           </div>
         </div>
       </div>
