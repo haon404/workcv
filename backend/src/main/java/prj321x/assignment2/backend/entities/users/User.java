@@ -21,10 +21,10 @@ public class User {
     @Column(name = "id", nullable = false)
     private Integer id;
     
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
     
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
     
     @Column(name = "password", nullable = false)
@@ -33,16 +33,16 @@ public class User {
     @Column(name = "full_name", nullable = false)
     private String fullName;
     
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
     
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "phone_number")
     private String phoneNumber;
     
-    @Column(name = "pfp", nullable = false)
+    @Column(name = "pfp")
     private String pfp;
     
-//    ROLE_APPLICANT, ROLE_RECRUITER
+    //    ROLE_APPLICANT, ROLE_RECRUITER
     @Column(name = "role", nullable = false)
     private String role;
     
@@ -60,8 +60,8 @@ public class User {
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private Set<RecruitmentApply> recruitmentApplies = new LinkedHashSet<>();
     
-//    recruiter exclusive
-    @Column(name = "status", nullable = false)
+    //    recruiter exclusive
+    @Column(name = "status")
     private Integer status;
     
     @ManyToOne

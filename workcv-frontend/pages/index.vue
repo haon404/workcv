@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Category } from '~/entity/Category'
 
 //Section popular company
@@ -6,22 +6,22 @@ import type { Company } from '~/entity/Company'
 import type { Recruitment } from '~/entity/Recruitment'
 
 const company = ref<Company>()
-await useHttp<Company>("/company/popular")
+await useHttp<Company>('/company/popular')
     .then(r => company.value = r)
     .catch(e => console.log(e))
 
 const recruitment = ref<Recruitment>()
-await useHttp<Recruitment>("/recruitment/popular")
+await useHttp<Recruitment>('/recruitment/popular')
     .then(r => recruitment.value = r)
     .catch(e => console.log(e))
 const recruitmentCompany = ref<Company>()
-await useHttp<Company>(`/company/${recruitment.value?.companyId}`)
+await useHttp<Company>(`/company/${ recruitment.value?.companyId }`)
     .then(r => recruitmentCompany.value = r)
     .catch(e => console.log(e))
 
 // Section categories
 const popularCategories = ref<Category[]>()
-await useHttp<Category[]>("/category/populars")
+await useHttp<Category[]>('/category/populars')
     .then(r => popularCategories.value = r)
     .catch(e => console.log(e))
 </script>
@@ -87,7 +87,7 @@ await useHttp<Category[]>("/category/populars")
         <template #icon>
           <ElementIconApplicant/>
         </template>
-        <template #title> Find million of jobs </template>
+        <template #title> Find million of jobs</template>
         <template #desc>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita,
           recusandae quos corrupti maiores soluta odio.
@@ -97,7 +97,7 @@ await useHttp<Category[]>("/category/populars")
         <template #icon>
           <ElementIconApplicant/>
         </template>
-        <template #title> Easy work management </template>
+        <template #title> Easy work management</template>
         <template #desc>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita,
           recusandae quos corrupti maiores soluta odio.
@@ -107,7 +107,7 @@ await useHttp<Category[]>("/category/populars")
         <template #icon>
           <ElementIconApplicant/>
         </template>
-        <template #title> Top jobs </template>
+        <template #title> Top jobs</template>
         <template #desc>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita,
           recusandae quos corrupti maiores soluta odio.
@@ -117,7 +117,7 @@ await useHttp<Category[]>("/category/populars")
         <template #icon>
           <ElementIconApplicant/>
         </template>
-        <template #title> Find million of jobs </template>
+        <template #title> Find million of jobs</template>
         <template #desc>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita,
           recusandae quos corrupti maiores soluta odio.
@@ -126,20 +126,20 @@ await useHttp<Category[]>("/category/populars")
     </template>
   </section-description>
   
-  <section-popular class="py-24" :amount="recruitmentCompany?.recruitments.length">
+  <section-popular :amount="recruitmentCompany?.recruitments.length" class="py-24">
     <template #cards>
       <module-card-popular>
-        <template #desc> {{ recruitment?.description }} </template>
-        <template #title> {{ recruitment?.title }} </template>
-        <template #company> {{ recruitmentCompany?.name }} </template>
-        <template #location> {{ recruitment?.address }} </template>
+        <template #desc> {{ recruitment?.description }}</template>
+        <template #title> {{ recruitment?.title }}</template>
+        <template #company> {{ recruitmentCompany?.name }}</template>
+        <template #location> {{ recruitment?.address }}</template>
       </module-card-popular>
     </template>
-<!--    TODO: change logo to actual picture-->
+    <!--    TODO: change logo to actual picture-->
     <template #companyImage>{{ company?.logo }}</template>
-    <template #companyName> {{ company?.name }} </template>
+    <template #companyName> {{ company?.name }}</template>
   </section-popular>
-  
+
 </template>
 
 <style scoped>

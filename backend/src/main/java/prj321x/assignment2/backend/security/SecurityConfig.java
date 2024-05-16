@@ -14,6 +14,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
@@ -25,6 +27,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 public class SecurityConfig {
     private final RsaKeyProperties rsaKeys;
+    
+    @Bean
+    public static PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -32,6 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("api/v1/recruiter/**").hasAuthority("SCOPE_RECRUITER")
                         .requestMatchers("api/v1/applicant/**").hasAuthority("SCOPE_APPLICANT")
+                        .requestMatchers("api/v1/company/update/**").hasAuthority("SCOPE_RECRUITER")
                         .anyRequest().permitAll()
                 )
                 .oauth2ResourceServer(oath2 -> oath2
@@ -53,5 +62,5 @@ public class SecurityConfig {
         JWKSource<SecurityContext> jks = new ImmutableJWKSet<>(new JWKSet(jwk));
         return new NimbusJwtEncoder(jks);
     }
-
+    
 }

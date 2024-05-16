@@ -1,8 +1,8 @@
-export interface Applicant {
+export interface Applicant{
     id: number
     description: string
     email: string
-    full_name: string
+    fullName: string
     address: string
     phoneNumber: string
     role: string

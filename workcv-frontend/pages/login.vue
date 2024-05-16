@@ -11,7 +11,6 @@ const password = ref('')
 const { authenticateUser } = useAuth()
 const { authenticated, error } = storeToRefs(useAuth())
 
-const { user } = storeToRefs(useUserStore())
 const { getUserDetail } = useUserStore()
 
 async function login(){
