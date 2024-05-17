@@ -1,9 +1,0 @@
-ALTER TABLE user
-DROP
-COLUMN `role`;
-
-ALTER TABLE user
-    MODIFY company_id INT NULL;
-
-ALTER TABLE user
-    ADD `role` VARCHAR(255) NOT NULL;
